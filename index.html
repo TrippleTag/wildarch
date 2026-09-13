@@ -2,795 +2,999 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>WILDARCH | Minecraft</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #050b18;
-            --navy-2: #09152a;
-            --blue: #2563eb;
-            --blue-light: #60a5fa;
-            --white: #f8fafc;
-            --gray: #94a3b8;
-            --border: rgba(255,255,255,.10);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--white);
-            background: var(--navy);
-            overflow-x: hidden;
-        }
-
-        /* =========================
-           NAV
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 72px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 7%;
-
-            z-index: 100;
-
-            background: rgba(5, 11, 24, .72);
-            backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 4px;
-        }
-
-        .logo span {
-            color: var(--blue-light);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 14px;
-            transition: .2s;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            position: relative;
-            overflow: hidden;
-
-            padding: 100px 20px;
-            
-            background:
-                radial-gradient(
-                    circle at 50% 35%,
-                    rgba(37,99,235,.22),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 20% 80%,
-                    rgba(30,64,175,.18),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #050b18,
-                    #09152a 55%,
-                    #050b18
-                );
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WILDARCH — Minecraft Server</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #030712;
+    --navy: #071329;
+    --navy2: #0b1d3a;
+    --blue: #2563eb;
+    --blue2: #3b82f6;
+    --cyan: #60a5fa;
+    --white: #f8fafc;
+    --gray: #94a3b8;
+    --line: rgba(255,255,255,.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+    background: var(--dark);
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37,99,235,.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 60%,
+            rgba(30,64,175,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(59,130,246,.12),
+            transparent 30%
+        );
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
 
-        /* Luces */
+    background: rgba(3,7,18,.7);
+    backdrop-filter: blur(18px);
 
-        .glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
+    border-bottom: 1px solid var(--line);
 
-            background: #2563eb;
+    z-index: 100;
+}
 
-            filter: blur(180px);
-            opacity: .12;
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
 
-            border-radius: 50%;
-        }
+.logo span {
+    color: var(--cyan);
+}
 
-        .glow.one {
-            top: -250px;
-            left: -200px;
-        }
+nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
 
-        .glow.two {
-            bottom: -300px;
-            right: -150px;
-        }
+nav a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
+}
 
-        /* Detalles tipo bloques */
+nav a:hover {
+    color: white;
+}
 
-        .pixel {
-            position: absolute;
 
-            width: 10px;
-            height: 10px;
+/* =========================
+   HERO
+========================= */
 
-            background: #3b82f6;
+.hero {
+    min-height: 100vh;
 
-            opacity: .35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            box-shadow:
-                20px 10px 0 rgba(96,165,250,.2),
-                40px -5px 0 rgba(96,165,250,.15);
-        }
+    text-align: center;
 
-        .pixel.p1 {
-            top: 25%;
-            left: 15%;
-        }
+    position: relative;
 
-        .pixel.p2 {
-            top: 32%;
-            right: 18%;
-        }
+    padding: 130px 20px 100px;
 
-        .pixel.p3 {
-            bottom: 25%;
-            left: 25%;
-        }
+    overflow: hidden;
+}
 
-        .pixel.p4 {
-            bottom: 20%;
-            right: 25%;
-        }
 
-        /* =========================
-           HERO CONTENT
-        ========================= */
+/* GRID */
 
-        .hero-content {
-            position: relative;
-            z-index: 5;
+.hero::before {
+    content: "";
 
-            max-width: 800px;
-        }
+    position: absolute;
+    inset: 0;
 
-        .tag {
-            display: inline-block;
+    background-image:
+        linear-gradient(
+            rgba(96,165,250,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(96,165,250,.035) 1px,
+            transparent 1px
+        );
 
-            padding: 8px 14px;
+    background-size: 55px 55px;
 
-            border: 1px solid rgba(96,165,250,.25);
-            border-radius: 999px;
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+}
 
-            background: rgba(37,99,235,.08);
 
-            color: var(--blue-light);
+/* BLUE GLOW */
 
-            font-size: 12px;
-            font-weight: bold;
+.hero::after {
+    content: "";
 
-            letter-spacing: 2px;
+    position: absolute;
 
-            margin-bottom: 25px;
-        }
+    width: 650px;
+    height: 650px;
 
-        h1 {
-            font-size: clamp(70px, 13vw, 145px);
+    background: #2563eb;
 
-            line-height: .85;
+    opacity: .12;
 
-            letter-spacing: 8px;
+    filter: blur(180px);
 
-            font-weight: 900;
+    border-radius: 50%;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #ffffff,
-                    #93c5fd
-                );
+    top: 5%;
+    left: 50%;
 
-            -webkit-background-clip: text;
-            background-clip: text;
+    transform: translateX(-50%);
+}
 
-            color: transparent;
 
-            filter:
-                drop-shadow(0 0 30px rgba(59,130,246,.18));
-        }
+/* =========================
+   HERO CONTENT
+========================= */
 
-        .subtitle {
-            margin-top: 28px;
+.hero-content {
+    position: relative;
+    z-index: 5;
 
-            font-size: 19px;
+    max-width: 950px;
+}
 
-            color: var(--gray);
-        }
+.badge {
+    display: inline-flex;
 
-        .subtitle strong {
-            color: white;
-        }
+    align-items: center;
+    gap: 8px;
 
-        /* =========================
-           SERVER IP
-        ========================= */
+    padding: 8px 15px;
 
-        .server {
-            display: inline-flex;
+    border: 1px solid rgba(96,165,250,.25);
 
-            align-items: center;
+    border-radius: 50px;
 
-            margin-top: 35px;
+    background: rgba(37,99,235,.08);
 
-            padding: 5px;
+    color: #93c5fd;
 
-            border-radius: 12px;
+    font-size: 12px;
 
-            background: rgba(255,255,255,.05);
+    font-weight: bold;
 
-            border: 1px solid var(--border);
+    letter-spacing: 2px;
 
-            backdrop-filter: blur(15px);
+    margin-bottom: 28px;
+}
 
-            box-shadow:
-                0 20px 60px rgba(0,0,0,.25);
-        }
+.status-dot {
+    width: 7px;
+    height: 7px;
 
-        .ip {
-            padding: 14px 18px;
+    border-radius: 50%;
 
-            min-width: 210px;
+    background: #4ade80;
 
-            font-family: monospace;
+    box-shadow:
+        0 0 12px #4ade80;
+}
 
-            color: #bfdbfe;
-        }
 
-        .copy {
-            padding: 14px 18px;
+/* TITLE */
 
-            border: none;
+h1 {
+    font-size: clamp(70px, 14vw, 160px);
 
-            border-radius: 8px;
+    line-height: .85;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #3b82f6,
-                    #2563eb
-                );
+    letter-spacing: 9px;
 
-            color: white;
+    font-weight: 1000;
 
-            font-weight: bold;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 10%,
+            #bfdbfe 45%,
+            #3b82f6 100%
+        );
 
-            cursor: pointer;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-            transition: .2s;
-        }
+    color: transparent;
 
-        .copy:hover {
-            transform: translateY(-2px);
+    filter:
+        drop-shadow(
+            0 15px 40px rgba(37,99,235,.25)
+        );
+}
 
-            box-shadow:
-                0 8px 25px rgba(37,99,235,.35);
-        }
 
-        /* =========================
-           BUTTON
-        ========================= */
+/* SUBTITLE */
 
-        .button {
-            display: inline-block;
+.hero-subtitle {
+    margin-top: 30px;
 
-            margin-top: 20px;
+    font-size: 21px;
 
-            padding: 14px 23px;
+    color: var(--gray);
+}
 
-            color: white;
+.hero-subtitle strong {
+    color: white;
+}
 
-            text-decoration: none;
 
-            font-size: 14px;
-            font-weight: bold;
+/* =========================
+   SERVER CARD
+========================= */
 
-            border: 1px solid rgba(96,165,250,.25);
+.server-card {
+    width: min(620px, 100%);
 
-            border-radius: 9px;
+    margin: 40px auto 0;
 
-            background: rgba(255,255,255,.04);
+    padding: 7px;
 
-            transition: .2s;
-        }
+    display: flex;
+    align-items: center;
 
-        .button:hover {
-            background: rgba(59,130,246,.12);
+    border: 1px solid rgba(96,165,250,.18);
 
-            border-color: rgba(96,165,250,.5);
+    border-radius: 15px;
 
-            transform: translateY(-2px);
-        }
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
 
-        /* =========================
-           FEATURES
-        ========================= */
+    backdrop-filter: blur(20px);
 
-        .features {
-            padding: 100px 7%;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35);
+}
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #050b18,
-                    #081326
-                );
+.server-info {
+    flex: 1;
 
-            border-top: 1px solid var(--border);
-        }
+    text-align: left;
 
-        .features-container {
-            max-width: 950px;
-            margin: auto;
+    padding: 14px 18px;
+}
 
-            display: grid;
+.server-label {
+    font-size: 10px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    color: var(--gray);
 
-            gap: 18px;
-        }
+    letter-spacing: 2px;
 
-        .feature {
-            padding: 30px;
+    margin-bottom: 5px;
+}
 
-            border: 1px solid var(--border);
+.server-ip {
+    font-family: monospace;
 
-            border-radius: 14px;
+    color: #bfdbfe;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.045),
-                    rgba(255,255,255,.015)
-                );
+    font-size: 17px;
 
-            backdrop-filter: blur(10px);
+    font-weight: bold;
+}
 
-            transition: .25s;
-        }
+.copy-button {
+    border: none;
 
-        .feature:hover {
-            transform: translateY(-5px);
+    padding: 15px 22px;
 
-            border-color:
-                rgba(96,165,250,.3);
+    border-radius: 10px;
 
-            box-shadow:
-                0 20px 50px rgba(0,0,0,.2);
-        }
+    color: white;
 
-        .feature-number {
-            color: var(--blue-light);
+    font-weight: bold;
 
-            font-family: monospace;
+    cursor: pointer;
 
-            font-size: 13px;
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #1d4ed8
+        );
 
-            margin-bottom: 20px;
-        }
+    box-shadow:
+        0 8px 25px rgba(37,99,235,.3);
 
-        .feature h3 {
-            font-size: 17px;
+    transition: .2s;
+}
 
-            margin-bottom: 10px;
-        }
+.copy-button:hover {
+    transform: translateY(-2px);
 
-        .feature p {
-            color: var(--gray);
+    box-shadow:
+        0 12px 35px rgba(37,99,235,.45);
+}
 
-            font-size: 14px;
 
-            line-height: 1.6;
-        }
+/* =========================
+   BUTTONS
+========================= */
 
-        /* =========================
-           DISCORD
-        ========================= */
+.buttons {
+    display: flex;
 
-        .discord {
-            padding: 100px 20px;
+    justify-content: center;
 
-            text-align: center;
+    gap: 14px;
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(37,99,235,.15),
-                    transparent 50%
-                ),
-                #071122;
-        }
+    margin-top: 20px;
+}
 
-        .discord h2 {
-            font-size: 40px;
+.btn {
+    display: inline-block;
 
-            margin-bottom: 15px;
-        }
+    padding: 14px 24px;
 
-        .discord p {
-            color: var(--gray);
+    border-radius: 10px;
 
-            margin-bottom: 25px;
-        }
+    text-decoration: none;
 
-        .discord-button {
-            display: inline-block;
+    font-weight: bold;
 
-            padding: 14px 24px;
+    font-size: 14px;
 
-            border-radius: 9px;
+    transition: .2s;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563eb,
-                    #1d4ed8
-                );
+.btn-primary {
+    color: white;
 
-            color: white;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
 
-            text-decoration: none;
+    box-shadow:
+        0 10px 30px rgba(37,99,235,.25);
+}
 
-            font-weight: bold;
+.btn-secondary {
+    color: #bfdbfe;
 
-            box-shadow:
-                0 10px 35px rgba(37,99,235,.25);
+    border: 1px solid var(--line);
 
-            transition: .2s;
-        }
+    background: rgba(255,255,255,.035);
+}
 
-        .discord-button:hover {
-            transform: translateY(-3px);
+.btn:hover {
+    transform: translateY(-3px);
+}
 
-            box-shadow:
-                0 15px 40px rgba(37,99,235,.35);
-        }
 
-        /* =========================
-           FOOTER
-        ========================= */
+/* =========================
+   FEATURES
+========================= */
 
-        footer {
-            padding: 25px;
+.features {
+    position: relative;
 
-            text-align: center;
+    padding: 100px 7%;
 
-            color: #526174;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(7,19,41,.9)
+        );
 
-            font-size: 12px;
+    border-top: 1px solid var(--line);
+}
 
-            border-top: 1px solid var(--border);
-        }
+.section-header {
+    text-align: center;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    margin-bottom: 55px;
+}
 
-        @media(max-width: 700px) {
+.section-header span {
+    color: var(--blue2);
 
-            nav {
-                padding: 0 20px;
-            }
+    font-size: 12px;
 
-            nav ul {
-                display: none;
-            }
+    font-weight: bold;
 
-            h1 {
-                font-size: 65px;
-                letter-spacing: 4px;
-            }
+    letter-spacing: 3px;
+}
 
-            .subtitle {
-                font-size: 16px;
-            }
+.section-header h2 {
+    margin-top: 10px;
 
-            .server {
-                width: 100%;
-                max-width: 340px;
-            }
+    font-size: 42px;
+}
 
-            .ip {
-                min-width: 0;
-                flex: 1;
-                font-size: 13px;
-            }
+.section-header p {
+    max-width: 600px;
 
-            .features-container {
-                grid-template-columns: 1fr;
-            }
+    margin: 15px auto 0;
 
-            .discord h2 {
-                font-size: 30px;
-            }
-        }
+    color: var(--gray);
 
-    </style>
+    line-height: 1.6;
+}
+
+
+/* CARDS */
+
+.cards {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 32px;
+
+    min-height: 230px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.06),
+            rgba(255,255,255,.015)
+        );
+
+    backdrop-filter: blur(15px);
+
+    transition: .3s;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    background: var(--blue);
+
+    filter: blur(80px);
+
+    opacity: .12;
+
+    top: -70px;
+    right: -50px;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(96,165,250,.35);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+}
+
+.card-number {
+    color: var(--blue2);
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    margin-bottom: 45px;
+}
+
+.card h3 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--gray);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord {
+    position: relative;
+
+    padding: 120px 20px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(37,99,235,.2),
+            transparent 55%
+        );
+}
+
+.discord-box {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 65px 30px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(96,165,250,.18);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.1),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter: blur(20px);
+}
+
+.discord-box h2 {
+    font-size: 44px;
+
+    margin-bottom: 15px;
+}
+
+.discord-box p {
+    color: var(--gray);
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    border-top: 1px solid var(--line);
+
+    color: #526174;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 750px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    h1 {
+        font-size: 67px;
+
+        letter-spacing: 4px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+    }
+
+    .server-card {
+        flex-direction: column;
+
+        padding: 7px;
+    }
+
+    .server-info {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .copy-button {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+
+        width: 100%;
+
+        max-width: 340px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .discord-box h2 {
+        font-size: 32px;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- NAV -->
+<!-- =========================
+     NAV
+========================= -->
 
-    <nav>
+<nav>
 
-        <div class="logo">
-            WILD<span>ARCH</span>
+    <div class="logo">
+        WILD<span>ARCH</span>
+    </div>
+
+    <ul>
+        <li>
+            <a href="#inicio">Inicio</a>
+        </li>
+
+        <li>
+            <a href="#servidor">Servidor</a>
+        </li>
+
+        <li>
+            <a href="#discord">Discord</a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <div class="badge">
+
+            <div class="status-dot"></div>
+
+            MINECRAFT SURVIVAL
+
         </div>
 
-        <ul>
-            <li>
-                <a href="#servidor">
-                    Servidor
-                </a>
-            </li>
 
-            <li>
-                <a href="#discord">
-                    Discord
-                </a>
-            </li>
-        </ul>
-
-    </nav>
+        <h1>
+            WILDARCH
+        </h1>
 
 
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="glow one"></div>
-        <div class="glow two"></div>
-
-        <div class="pixel p1"></div>
-        <div class="pixel p2"></div>
-        <div class="pixel p3"></div>
-        <div class="pixel p4"></div>
+        <p class="hero-subtitle">
+            <strong>Explora.</strong>
+            <strong>Construye.</strong>
+            <strong>Sobrevive.</strong>
+        </p>
 
 
-        <div class="hero-content">
+        <!-- SERVER -->
 
-            <div class="tag">
-                MINECRAFT SURVIVAL
-            </div>
+        <div class="server-card">
 
+            <div class="server-info">
 
-            <h1>
-                WILDARCH
-            </h1>
+                <div class="server-label">
+                    DIRECCIÓN DEL SERVIDOR
+                </div>
 
-
-            <p class="subtitle">
-                <strong>Explora.</strong>
-                <strong>Construye.</strong>
-                <strong>Conquista.</strong>
-            </p>
-
-
-            <div class="server">
-
-                <!-- CAMBIA TU IP -->
-
-                <span
-                    class="ip"
-                    id="serverIP"
-                >
-                    play.wildarch.es
-                </span>
-
-                <button
-                    class="copy"
-                    onclick="copyIP()"
-                >
-                    COPIAR
-                </button>
+                <div class="server-ip" id="serverIP">
+                    wildarch.aternos.me
+                </div>
 
             </div>
 
 
-            <br>
+            <button
+                class="copy-button"
+                onclick="copyIP()"
+            >
+                COPIAR IP
+            </button>
+
+        </div>
 
 
-            <!-- CAMBIA TU DISCORD -->
+        <div class="buttons">
+
+            <a
+                href="#servidor"
+                class="btn btn-primary"
+            >
+                VER SERVIDOR
+            </a>
 
             <a
                 href="https://discord.gg/TU-SERVIDOR"
                 target="_blank"
-                class="button"
+                class="btn btn-secondary"
             >
-                Discord →
+                DISCORD →
             </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FEATURES -->
+<!-- =========================
+     FEATURES
+========================= -->
 
-    <section
-        class="features"
-        id="servidor"
-    >
+<section
+    class="features"
+    id="servidor"
+>
 
-        <div class="features-container">
+    <div class="section-header">
 
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    01
-                </div>
-
-                <h3>
-                    Survival
-                </h3>
-
-                <p>
-                    Un mundo abierto para construir,
-                    explorar y sobrevivir.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    02
-                </div>
-
-                <h3>
-                    Comunidad
-                </h3>
-
-                <p>
-                    Juega con otros jugadores
-                    y crea tu propia aventura.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    03
-                </div>
-
-                <h3>
-                    WildArch
-                </h3>
-
-                <p>
-                    Un servidor creado para
-                    disfrutar Minecraft.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- DISCORD -->
-
-    <section
-        class="discord"
-        id="discord"
-    >
+        <span>
+            WILDARCH
+        </span>
 
         <h2>
-            Únete a WildArch
+            Tu mundo comienza aquí
         </h2>
 
         <p>
-            Forma parte de nuestra comunidad.
+            Un servidor de Minecraft pensado para explorar,
+            construir y disfrutar con otros jugadores.
         </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-number">
+                01 / SURVIVAL
+            </div>
+
+            <h3>
+                Sobrevive
+            </h3>
+
+            <p>
+                Consigue recursos, crea tu base
+                y construye tu propia aventura.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02 / EXPLORE
+            </div>
+
+            <h3>
+                Explora
+            </h3>
+
+            <p>
+                Descubre nuevos lugares,
+                construcciones y secretos.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03 / COMMUNITY
+            </div>
+
+            <h3>
+                Comunidad
+            </h3>
+
+            <p>
+                Conoce jugadores y forma parte
+                de la comunidad WildArch.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DISCORD
+========================= -->
+
+<section
+    class="discord"
+    id="discord"
+>
+
+    <div class="discord-box">
+
+        <h2>
+            Únete a WILDARCH
+        </h2>
+
+        <p>
+            Entra al Discord y forma parte de la comunidad.
+        </p>
+
+        <!-- CAMBIA EL ENLACE -->
 
         <a
             href="https://discord.gg/TU-SERVIDOR"
             target="_blank"
-            class="discord-button"
+            class="btn btn-primary"
         >
             ENTRAR AL DISCORD
         </a>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<footer>
 
-    <footer>
-        © 2026 WILDARCH
-    </footer>
+    © 2026 WILDARCH · Minecraft Server
+
+</footer>
 
 
-    <script>
+<script>
 
-        function copyIP() {
+function copyIP() {
 
-            const ip =
-                document
-                .getElementById("serverIP")
-                .innerText;
+    const ip =
+        document
+        .getElementById("serverIP")
+        .innerText;
 
-            navigator
-                .clipboard
-                .writeText(ip);
+    navigator
+        .clipboard
+        .writeText(ip);
 
-            const button =
-                document.querySelector(".copy");
+    const button =
+        document.querySelector(".copy-button");
 
-            button.innerText = "COPIADO ✓";
+    button.innerText = "¡COPIADO! ✓";
 
-            setTimeout(() => {
+    setTimeout(() => {
 
-                button.innerText = "COPIAR";
+        button.innerText = "COPIAR IP";
 
-            }, 1500);
+    }, 1800);
 
-        }
+}
 
-    </script>
+</script>
 
 
 </body>
