@@ -1,2337 +1,777 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>WildArch | Minecraft Server</title>
 
-    <meta name="description"
-          content="WILDARCH - Servidor de Minecraft Survival. Explora, construye y juega con la comunidad.">
-
-    <meta name="theme-color"
-          content="#050b18">
-
-    <title>WILDARCH — Minecraft Server</title>
-
+    <meta name="description" content="WildArch - Servidor de Minecraft. Únete, entra a nuestro Discord y consigue rangos exclusivos.">
 
     <style>
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            color: #f8fafc;
-
-            background:
-                #030712;
-
-            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0d0c;
+            color: #f1f1f1;
+            line-height: 1.6;
         }
 
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-
-        button {
-            font-family: inherit;
-        }
-
-
-        /* =========================================================
-           VARIABLES
-        ========================================================= */
-
-        :root {
-
-            --black: #030712;
-
-            --dark: #050b18;
-
-            --navy: #071329;
-
-            --navy-light: #0b1d3a;
-
-            --blue-dark: #1d4ed8;
-
-            --blue: #2563eb;
-
-            --blue-light: #3b82f6;
-
-            --cyan: #60a5fa;
-
-            --white: #f8fafc;
-
-            --gray: #94a3b8;
-
-            --gray-dark: #64748b;
-
-            --line:
-                rgba(255, 255, 255, 0.09);
-
-        }
-
-
-        /* =========================================================
-           BACKGROUND
-        ========================================================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -5;
-
-            background:
-
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(37, 99, 235, 0.25),
-                    transparent 35%
-                ),
-
-                radial-gradient(
-                    circle at 0% 60%,
-                    rgba(29, 78, 216, 0.12),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 100% 70%,
-                    rgba(59, 130, 246, 0.12),
-                    transparent 30%
-                );
-
-            pointer-events: none;
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -4;
-
-            opacity: 0.3;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(96, 165, 250, 0.025) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(96, 165, 250, 0.025) 1px,
-                    transparent 1px
-                );
-
-            background-size: 60px 60px;
-
-            pointer-events: none;
-        }
-
-
-        /* =========================================================
-           NAVBAR
-        ========================================================= */
+        /* NAVBAR */
 
         nav {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
-            height: 76px;
+            height: 70px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            padding: 0 7%;
+            padding: 0 8%;
+
+            background: rgba(11, 13, 12, 0.85);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid #202522;
 
             z-index: 1000;
-
-            background:
-                rgba(3, 7, 18, 0.75);
-
-            backdrop-filter:
-                blur(20px);
-
-            border-bottom:
-                1px solid var(--line);
         }
-
 
         .logo {
-
             font-size: 22px;
-
-            font-weight: 900;
-
-            letter-spacing: 4px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
-
 
         .logo span {
-
-            color:
-                var(--cyan);
+            color: #77c043;
         }
 
-
         nav ul {
-
             display: flex;
-
-            align-items: center;
-
-            gap: 34px;
-
+            gap: 30px;
             list-style: none;
         }
 
-
         nav a {
-
-            color:
-                var(--gray);
-
+            color: #aaa;
+            text-decoration: none;
             font-size: 14px;
-
-            font-weight: 600;
-
-            transition: 0.25s;
+            transition: 0.2s;
         }
-
 
         nav a:hover {
-
-            color:
-                white;
+            color: #77c043;
         }
 
-
-        .nav-button {
-
-            padding:
-                10px 17px;
-
-            border-radius:
-                8px;
-
-            color:
-                white !important;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--blue-light),
-                    var(--blue-dark)
-                );
-
-            box-shadow:
-                0 8px 25px
-                rgba(37, 99, 235, 0.25);
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
+        /* HERO */
 
         .hero {
+            min-height: 100vh;
 
-            min-height:
-                100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-            position:
-                relative;
+            text-align: center;
 
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                130px 20px 100px;
-
-            overflow:
-                hidden;
-        }
-
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 650px;
-
-            height: 650px;
-
-            top: 0;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-            border-radius:
-                50%;
-
-            background:
-                #2563eb;
-
-            opacity:
-                0.12;
-
-            filter:
-                blur(180px);
-
-            pointer-events:
-                none;
-        }
-
-
-        .hero-content {
-
-            position:
-                relative;
-
-            z-index:
-                5;
-
-            max-width:
-                1000px;
-
-            width:
-                100%;
-        }
-
-
-        /* =========================================================
-           BADGE
-        ========================================================= */
-
-        .badge {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            padding:
-                9px 16px;
-
-            margin-bottom:
-                30px;
-
-            border:
-                1px solid
-                rgba(96, 165, 250, 0.25);
-
-            border-radius:
-                999px;
-
-            background:
-                rgba(37, 99, 235, 0.08);
-
-            color:
-                #93c5fd;
-
-            font-size:
-                11px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                2px;
-        }
-
-
-        .status-dot {
-
-            width:
-                8px;
-
-            height:
-                8px;
-
-            border-radius:
-                50%;
-
-            background:
-                #4ade80;
-
-            box-shadow:
-                0 0 15px
-                #4ade80;
-        }
-
-
-        /* =========================================================
-           TITLE
-        ========================================================= */
-
-        h1 {
-
-            font-size:
-                clamp(70px, 14vw, 170px);
-
-            line-height:
-                0.85;
-
-            font-weight:
-                1000;
-
-            letter-spacing:
-                10px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff 10%,
-                    #bfdbfe 45%,
-                    #3b82f6 100%
-                );
-
-            -webkit-background-clip:
-                text;
-
-            background-clip:
-                text;
-
-            color:
-                transparent;
-
-            filter:
-                drop-shadow(
-                    0 20px 45px
-                    rgba(37, 99, 235, 0.25)
-                );
-        }
-
-
-        .hero-description {
-
-            margin-top:
-                32px;
-
-            color:
-                var(--gray);
-
-            font-size:
-                20px;
-
-            line-height:
-                1.7;
-        }
-
-
-        .hero-description strong {
-
-            color:
-                white;
-        }
-
-
-        /* =========================================================
-           SERVER BOX
-        ========================================================= */
-
-        .server-card {
-
-            width:
-                min(680px, 100%);
-
-            margin:
-                40px auto 0;
-
-            padding:
-                7px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            border:
-                1px solid
-                rgba(96, 165, 250, 0.18);
-
-            border-radius:
-                16px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.08),
-                    rgba(255,255,255,0.025)
-                );
-
-            backdrop-filter:
-                blur(20px);
-
-            box-shadow:
-                0 30px 90px
-                rgba(0,0,0,0.35);
-        }
-
-
-        .server-info {
-
-            flex:
-                1;
-
-            text-align:
-                left;
-
-            padding:
-                14px 20px;
-        }
-
-
-        .server-label {
-
-            margin-bottom:
-                6px;
-
-            color:
-                var(--gray);
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                2px;
-        }
-
-
-        .server-ip {
-
-            font-family:
-                monospace;
-
-            color:
-                #bfdbfe;
-
-            font-size:
-                18px;
-
-            font-weight:
-                bold;
-        }
-
-
-        .copy-button {
-
-            border:
-                none;
-
-            padding:
-                16px 24px;
-
-            border-radius:
-                11px;
-
-            color:
-                white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #3b82f6,
-                    #1d4ed8
-                );
-
-            font-size:
-                13px;
-
-            font-weight:
-                800;
-
-            cursor:
-                pointer;
-
-            transition:
-                0.25s;
-
-            box-shadow:
-                0 10px 30px
-                rgba(37,99,235,0.3);
-        }
-
-
-        .copy-button:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 15px 40px
-                rgba(37,99,235,0.45);
-        }
-
-
-        /* =========================================================
-           BUTTONS
-        ========================================================= */
-
-        .buttons {
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            gap:
-                14px;
-
-            margin-top:
-                20px;
-        }
-
-
-        .btn {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            gap:
-                8px;
-
-            padding:
-                14px 24px;
-
-            border-radius:
-                10px;
-
-            font-size:
-                13px;
-
-            font-weight:
-                800;
-
-            transition:
-                0.25s;
-        }
-
-
-        .btn:hover {
-
-            transform:
-                translateY(-3px);
-        }
-
-
-        .btn-primary {
-
-            color:
-                white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #2563eb,
-                    #1d4ed8
-                );
-
-            box-shadow:
-                0 12px 35px
-                rgba(37,99,235,0.25);
-        }
-
-
-        .btn-secondary {
-
-            color:
-                #bfdbfe;
-
-            border:
-                1px solid
-                var(--line);
-
-            background:
-                rgba(255,255,255,0.035);
-        }
-
-
-        /* =========================================================
-           SCROLL INDICATOR
-        ========================================================= */
-
-        .scroll-down {
-
-            position:
-                absolute;
-
-            bottom:
-                30px;
-
-            left:
-                50%;
-
-            transform:
-                translateX(-50%);
-
-            color:
-                var(--gray-dark);
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                3px;
-        }
-
-
-        /* =========================================================
-           GENERAL SECTION
-        ========================================================= */
-
-        section {
-
-            scroll-margin-top:
-                90px;
-        }
-
-
-        .section {
-
-            padding:
-                110px 7%;
-        }
-
-
-        .section-header {
-
-            max-width:
-                700px;
-
-            margin:
-                0 auto 60px;
-
-            text-align:
-                center;
-        }
-
-
-        .section-label {
-
-            display:
-                block;
-
-            margin-bottom:
-                12px;
-
-            color:
-                var(--blue-light);
-
-            font-size:
-                11px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                4px;
-        }
-
-
-        .section-header h2 {
-
-            font-size:
-                clamp(35px, 5vw, 52px);
-
-            margin-bottom:
-                18px;
-        }
-
-
-        .section-header p {
-
-            color:
-                var(--gray);
-
-            line-height:
-                1.7;
-
-            font-size:
-                15px;
-        }
-
-
-        /* =========================================================
-           SERVER SECTION
-        ========================================================= */
-
-        .server-section {
-
-            background:
-                linear-gradient(
-                    180deg,
-                    transparent,
-                    rgba(7,19,41,0.9)
-                );
-
-            border-top:
-                1px solid var(--line);
-        }
-
-
-        .server-grid {
-
-            max-width:
-                1150px;
-
-            margin:
-                auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1.3fr 0.7fr;
-
-            gap:
-                22px;
-        }
-
-
-        .big-card {
-
-            padding:
-                35px;
-
-            border:
-                1px solid var(--line);
-
-            border-radius:
-                20px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.06),
-                    rgba(255,255,255,0.015)
-                );
-
-            backdrop-filter:
-                blur(20px);
-        }
-
-
-        .big-card-title {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                30px;
-        }
-
-
-        .big-card h3 {
-
-            font-size:
-                23px;
-        }
-
-
-        .online {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            color:
-                #4ade80;
-
-            font-size:
-                12px;
-
-            font-weight:
-                bold;
-        }
-
-
-        .online-dot {
-
-            width:
-                8px;
-
-            height:
-                8px;
-
-            border-radius:
-                50%;
-
-            background:
-                #4ade80;
-
-            box-shadow:
-                0 0 12px #4ade80;
-        }
-
-
-        .server-details {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap:
-                15px;
-        }
-
-
-        .detail {
-
-            padding:
-                18px;
-
-            border:
-                1px solid var(--line);
-
-            border-radius:
-                12px;
-
-            background:
-                rgba(255,255,255,0.025);
-        }
-
-
-        .detail span {
-
-            display:
-                block;
-
-            margin-bottom:
-                7px;
-
-            color:
-                var(--gray-dark);
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                2px;
-        }
-
-
-        .detail strong {
-
-            font-size:
-                15px;
-
-            color:
-                #dbeafe;
-        }
-
-
-        .version {
-
-            color:
-                #60a5fa !important;
-        }
-
-
-        /* =========================================================
-           PLAYER CARD
-        ========================================================= */
-
-        .player-card {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                space-between;
-        }
-
-
-        .player-number {
-
-            font-size:
-                65px;
-
-            line-height:
-                1;
-
-            font-weight:
-                900;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    white,
-                    #3b82f6
-                );
-
-            -webkit-background-clip:
-                text;
-
-            background-clip:
-                text;
-
-            color:
-                transparent;
-        }
-
-
-        .player-text {
-
-            color:
-                var(--gray);
-
-            font-size:
-                13px;
-        }
-
-
-        /* =========================================================
-           FEATURES
-        ========================================================= */
-
-        .features-grid {
-
-            max-width:
-                1150px;
-
-            margin:
-                auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:
-                20px;
-        }
-
-
-        .feature {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            min-height:
-                270px;
-
-            padding:
-                30px;
-
-            border:
-                1px solid var(--line);
-
-            border-radius:
-                18px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.06),
-                    rgba(255,255,255,0.015)
-                );
-
-            transition:
-                0.3s;
-        }
-
-
-        .feature:hover {
-
-            transform:
-                translateY(-8px);
-
-            border-color:
-                rgba(96,165,250,0.35);
-
-            box-shadow:
-                0 25px 60px
-                rgba(0,0,0,0.25);
-        }
-
-
-        .feature::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                150px;
-
-            height:
-                150px;
-
-            right:
-                -70px;
-
-            top:
-                -70px;
-
-            border-radius:
-                50%;
-
-            background:
-                var(--blue);
-
-            opacity:
-                0.12;
-
-            filter:
-                blur(50px);
-        }
-
-
-        .feature-number {
-
-            color:
-                var(--blue-light);
-
-            font-family:
-                monospace;
-
-            font-size:
-                12px;
-
-            margin-bottom:
-                55px;
-        }
-
-
-        .feature h3 {
-
-            margin-bottom:
-                12px;
-
-            font-size:
-                23px;
-        }
-
-
-        .feature p {
-
-            color:
-                var(--gray);
-
-            line-height:
-                1.7;
-
-            font-size:
-                14px;
-        }
-
-
-        /* =========================================================
-           GAME MODES
-        ========================================================= */
-
-        .modes {
-
-            background:
-                #050b18;
-
-            border-top:
-                1px solid var(--line);
-
-            border-bottom:
-                1px solid var(--line);
-        }
-
-
-        .modes-grid {
-
-            max-width:
-                1100px;
-
-            margin:
-                auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:
-                20px;
-        }
-
-
-        .mode {
-
-            position:
-                relative;
-
-            min-height:
-                210px;
-
-            padding:
-                30px;
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid var(--line);
-
-            border-radius:
-                18px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(37,99,235,0.09),
-                    rgba(255,255,255,0.02)
-                );
-        }
-
-
-        .mode-icon {
-
-            width:
-                48px;
-
-            height:
-                48px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            margin-bottom:
-                25px;
-
-            border-radius:
-                12px;
-
-            background:
-                rgba(37,99,235,0.15);
-
-            border:
-                1px solid
-                rgba(96,165,250,0.15);
-
-            font-size:
-                23px;
-        }
-
-
-        .mode h3 {
-
-            margin-bottom:
-                8px;
-
-            font-size:
-                19px;
-        }
-
-
-        .mode p {
-
-            color:
-                var(--gray);
-
-            font-size:
-                13px;
-
-            line-height:
-                1.6;
-        }
-
-
-        /* =========================================================
-           DISCORD
-        ========================================================= */
-
-        .discord {
-
-            position:
-                relative;
-
-            padding:
-                130px 20px;
-
-            text-align:
-                center;
-
-            overflow:
-                hidden;
+            padding: 100px 20px 60px;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(37,99,235,0.2),
-                    transparent 55%
+                    rgba(80, 150, 55, 0.14),
+                    transparent 45%
                 );
         }
 
-
-        .discord-box {
-
-            max-width:
-                850px;
-
-            margin:
-                auto;
-
-            padding:
-                75px 30px;
-
-            border:
-                1px solid
-                rgba(96,165,250,0.18);
-
-            border-radius:
-                25px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(37,99,235,0.1),
-                    rgba(255,255,255,0.025)
-                );
-
-            backdrop-filter:
-                blur(20px);
-
-            box-shadow:
-                0 30px 100px
-                rgba(0,0,0,0.25);
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            font-weight: 900;
+            letter-spacing: -5px;
+            line-height: 1;
         }
 
-
-        .discord-box h2 {
-
-            margin-bottom:
-                16px;
-
-            font-size:
-                clamp(35px, 6vw, 55px);
+        .hero h1 span {
+            color: #77c043;
         }
 
-
-        .discord-box p {
-
-            margin-bottom:
-                30px;
-
-            color:
-                var(--gray);
-
-            font-size:
-                16px;
+        .hero p {
+            margin-top: 25px;
+            max-width: 600px;
+            color: #999;
+            font-size: 18px;
         }
 
+        .server-ip {
+            margin-top: 35px;
 
-        /* =========================================================
-           FOOTER
-        ========================================================= */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            padding: 14px 18px;
+
+            border: 1px solid #282d29;
+            border-radius: 10px;
+
+            background: #111412;
+        }
+
+        .server-ip code {
+            color: #77c043;
+            font-size: 16px;
+        }
+
+        .copy-btn {
+            border: none;
+            background: #77c043;
+            color: #081006;
+
+            padding: 9px 14px;
+            border-radius: 7px;
+
+            cursor: pointer;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            background: #8ed457;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 8px;
+
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #77c043;
+            color: #081006;
+        }
+
+        .btn-secondary {
+            border: 1px solid #303630;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* SERVER */
+
+        .server-box {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #111412;
+            border: 1px solid #222723;
+            border-radius: 12px;
+
+            padding: 30px;
+
+            transition: 0.25s;
+        }
+
+        .info-card:hover {
+            border-color: #4e713e;
+            transform: translateY(-4px);
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #888;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 15px;
+
+            color: #77c043;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #77c043;
+            box-shadow: 0 0 10px #77c043;
+        }
+
+        /* DISCORD */
+
+        .discord {
+            max-width: 900px;
+            margin: auto;
+
+            padding: 50px 30px;
+
+            text-align: center;
+
+            border-radius: 14px;
+
+            background: linear-gradient(
+                135deg,
+                #151a16,
+                #0e110f
+            );
+
+            border: 1px solid #242b25;
+        }
+
+        .discord h2 {
+            font-size: 34px;
+        }
+
+        .discord p {
+            max-width: 600px;
+            margin: 15px auto 25px;
+
+            color: #888;
+        }
+
+        .discord-btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #5865F2;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* STORE */
+
+        .store {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .rank {
+            position: relative;
+
+            padding: 30px 22px;
+
+            background: #111412;
+
+            border: 1px solid #252a26;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .rank:hover {
+            transform: translateY(-7px);
+            border-color: #77c043;
+        }
+
+        .rank h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .rank .price {
+            font-size: 30px;
+            font-weight: bold;
+
+            margin: 15px 0;
+
+            color: #77c043;
+        }
+
+        .rank ul {
+            list-style: none;
+
+            margin: 20px 0;
+
+            color: #888;
+            font-size: 14px;
+        }
+
+        .rank li {
+            margin: 8px 0;
+        }
+
+        .buy {
+            display: block;
+
+            padding: 11px;
+
+            border-radius: 7px;
+
+            background: #1b211c;
+            border: 1px solid #303830;
+
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .buy:hover {
+            background: #77c043;
+            color: #081006;
+        }
+
+        /* RANK COLORS */
+
+        .hunter h3 {
+            color: #7ec8ff;
+        }
+
+        .ravager h3 {
+            color: #ff984d;
+        }
+
+        .predator h3 {
+            color: #d65cff;
+        }
+
+        .wild h3 {
+            color: #77c043;
+        }
+
+        /* FOOTER */
 
         footer {
+            padding: 35px 20px;
 
-            padding:
-                35px 20px;
+            text-align: center;
 
-            text-align:
-                center;
+            border-top: 1px solid #202522;
 
-            border-top:
-                1px solid var(--line);
-
-            color:
-                #526174;
-
-            font-size:
-                12px;
+            color: #666;
+            font-size: 13px;
         }
 
-
-        footer strong {
-
-            color:
-                #94a3b8;
+        footer span {
+            color: #77c043;
         }
 
+        /* RESPONSIVE */
 
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 850px) {
-
-            nav {
-
-                padding:
-                    0 20px;
+        @media (max-width: 900px) {
+            .store {
+                grid-template-columns: repeat(2, 1fr);
             }
+        }
 
+        @media (max-width: 650px) {
+            nav {
+                padding: 0 20px;
+            }
 
             nav ul {
-
-                gap:
-                    15px;
+                gap: 12px;
             }
 
-
-            nav ul li:not(:last-child) {
-
-                display:
-                    none;
+            nav a {
+                font-size: 12px;
             }
 
-
-            .server-grid {
-
-                grid-template-columns:
-                    1fr;
+            .server-box {
+                grid-template-columns: 1fr;
             }
 
-
-            .features-grid {
-
-                grid-template-columns:
-                    1fr;
+            .store {
+                grid-template-columns: 1fr;
             }
 
-
-            .modes-grid {
-
-                grid-template-columns:
-                    1fr;
+            section {
+                padding: 80px 20px;
             }
 
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .server-ip {
+                flex-direction: column;
+            }
         }
-
-
-        @media (max-width: 600px) {
-
-            nav {
-
-                height:
-                    68px;
-            }
-
-
-            .logo {
-
-                font-size:
-                    18px;
-
-                letter-spacing:
-                    3px;
-            }
-
-
-            h1 {
-
-                font-size:
-                    65px;
-
-                letter-spacing:
-                    4px;
-            }
-
-
-            .hero {
-
-                padding:
-                    120px 18px 90px;
-            }
-
-
-            .hero-description {
-
-                font-size:
-                    16px;
-            }
-
-
-            .server-card {
-
-                flex-direction:
-                    column;
-            }
-
-
-            .server-info {
-
-                width:
-                    100%;
-
-                text-align:
-                    center;
-            }
-
-
-            .copy-button {
-
-                width:
-                    100%;
-            }
-
-
-            .buttons {
-
-                flex-direction:
-                    column;
-
-                width:
-                    100%;
-
-                max-width:
-                    350px;
-
-                margin-left:
-                    auto;
-
-                margin-right:
-                    auto;
-            }
-
-
-            .btn {
-
-                width:
-                    100%;
-            }
-
-
-            .server-details {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .section {
-
-                padding:
-                    85px 20px;
-            }
-
-
-            .big-card {
-
-                padding:
-                    25px;
-            }
-
-
-            .discord {
-
-                padding:
-                    90px 20px;
-            }
-
-
-            .discord-box {
-
-                padding:
-                    55px 20px;
-            }
-
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =========================================================
-         NAVBAR
-    ========================================================== -->
+    <!-- NAVBAR -->
 
     <nav>
-
-        <a href="#inicio" class="logo">
+        <div class="logo">
             WILD<span>ARCH</span>
-        </a>
-
+        </div>
 
         <ul>
-
-            <li>
-                <a href="#inicio">
-                    Inicio
-                </a>
-            </li>
-
-            <li>
-                <a href="#servidor">
-                    Servidor
-                </a>
-            </li>
-
-            <li>
-                <a href="#modos">
-                    Modos
-                </a>
-            </li>
-
-            <li>
-                <a href="#comunidad">
-                    Comunidad
-                </a>
-            </li>
-
-            <li>
-                <a
-                    href="https://discord.gg/TU-SERVIDOR"
-                    target="_blank"
-                    class="nav-button"
-                >
-                    Discord
-                </a>
-            </li>
-
+            <li><a href="#server">Server</a></li>
+            <li><a href="#discord">Discord</a></li>
+            <li><a href="#tienda">Tienda</a></li>
         </ul>
-
     </nav>
 
 
+    <!-- HERO -->
 
-    <!-- =========================================================
-         HERO
-    ========================================================== -->
+    <header class="hero">
 
-    <main>
+        <h1>
+            WILD<span>ARCH</span>
+        </h1>
 
-        <section
-            class="hero"
-            id="inicio"
-        >
+        <p>
+            Sobrevive. Explora. Domina.
+            <br>
+            Únete a la comunidad de WildArch.
+        </p>
 
-            <div class="hero-content">
+        <div class="server-ip">
+            <code id="ip">wildarch.aternos.me</code>
 
+            <button class="copy-btn" onclick="copyIP()">
+                Copiar IP
+            </button>
+        </div>
 
-                <div class="badge">
+        <div class="buttons">
+            <a href="#server" class="btn btn-primary">
+                Ver servidor
+            </a>
 
-                    <div class="status-dot"></div>
+            <a href="#tienda" class="btn btn-secondary">
+                Ver tienda
+            </a>
+        </div>
 
-                    SERVIDOR MINECRAFT SURVIVAL
-
-                </div>
-
-
-                <h1>
-                    WILDARCH
-                </h1>
-
-
-                <p class="hero-description">
-
-                    <strong>Explora.</strong>
-                    <strong>Construye.</strong>
-                    <strong>Sobrevive.</strong>
-
-                    <br>
-
-                    Tu próxima aventura comienza aquí.
-
-                </p>
+    </header>
 
 
-                <!-- SERVER IP -->
+    <!-- SERVER -->
 
-                <div class="server-card">
+    <section id="server">
 
-                    <div class="server-info">
+        <div class="section-title">
+            <h2>Servidor</h2>
 
-                        <div class="server-label">
-                            DIRECCIÓN DEL SERVIDOR
-                        </div>
-
-
-                        <div
-                            class="server-ip"
-                            id="serverIP"
-                        >
-                            wildarch.aternos.me
-                        </div>
-
-                    </div>
+            <p>
+                Todo lo que necesitas para entrar a WildArch.
+            </p>
+        </div>
 
 
-                    <button
-                        class="copy-button"
-                        onclick="copyIP()"
-                        id="copyButton"
-                    >
-                        COPIAR IP
-                    </button>
+        <div class="server-box">
 
-                </div>
-
-
-                <!-- HERO BUTTONS -->
-
-                <div class="buttons">
-
-                    <a
-                        href="#servidor"
-                        class="btn btn-primary"
-                    >
-                        VER SERVIDOR
-                        ↓
-                    </a>
-
-
-                    <a
-                        href="https://discord.gg/TU-SERVIDOR"
-                        target="_blank"
-                        class="btn btn-secondary"
-                    >
-                        DISCORD
-                        →
-                    </a>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="scroll-down">
-                SCROLL ↓
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             SERVER
-        ====================================================== -->
-
-        <section
-            class="section server-section"
-            id="servidor"
-        >
-
-            <div class="section-header">
-
-                <span class="section-label">
-                    EL SERVIDOR
-                </span>
-
-
-                <h2>
-                    Todo listo para jugar
-                </h2>
-
+            <div class="info-card">
+                <h3>IP del servidor</h3>
 
                 <p>
-                    Conecta con WILDARCH y empieza tu aventura.
-                    Construye tu mundo, explora nuevos lugares
-                    y juega junto a la comunidad.
+                    Copia esta dirección y añádela a tu lista de servidores de Minecraft.
                 </p>
 
+                <div class="status">
+                    <span class="status-dot"></span>
+                    wildarch.aternos.me
+                </div>
             </div>
 
 
-            <div class="server-grid">
-
-
-                <!-- SERVER INFO -->
-
-                <div class="big-card">
-
-                    <div class="big-card-title">
-
-                        <h3>
-                            Información
-                        </h3>
-
-
-                        <div class="online">
-
-                            <div class="online-dot"></div>
-
-                            ONLINE
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="server-details">
-
-
-                        <div class="detail">
-
-                            <span>
-                                IP
-                            </span>
-
-                            <strong>
-                                wildarch.aternos.me
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail">
-
-                            <span>
-                                TIPO
-                            </span>
-
-                            <strong>
-                                Survival
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail">
-
-                            <span>
-                                VERSIÓN
-                            </span>
-
-                            <strong class="version">
-                                Minecraft
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail">
-
-                            <span>
-                                ESTADO
-                            </span>
-
-                            <strong>
-                                Disponible
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PLAYERS -->
-
-                <div class="big-card player-card">
-
-                    <div>
-
-                        <div class="big-card-title">
-
-                            <h3>
-                                Comunidad
-                            </h3>
-
-                        </div>
-
-
-                        <div
-                            class="player-number"
-                            id="playerCount"
-                        >
-                            --
-                        </div>
-
-
-                        <p class="player-text">
-                            jugadores conectados
-                        </p>
-
-                    </div>
-
-
-                    <p class="player-text">
-
-                        Conecta al servidor para
-                        empezar a jugar.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             FEATURES
-        ====================================================== -->
-
-        <section
-            class="section"
-            id="comunidad"
-        >
-
-            <div class="section-header">
-
-                <span class="section-label">
-                    WILDARCH
-                </span>
-
-
-                <h2>
-                    Una experiencia diferente
-                </h2>
-
+            <div class="info-card">
+                <h3>Versión</h3>
 
                 <p>
-                    Hemos creado WILDARCH para que puedas
-                    disfrutar de Minecraft a tu manera.
+                    Minecraft Java Edition.
+                    <br><br>
+                    <!-- CAMBIA ESTA PARTE POR LA VERSIÓN DE TU SERVER -->
+                    Versión: Próximamente
                 </p>
-
             </div>
 
 
-            <div class="features-grid">
-
-
-                <div class="feature">
-
-                    <div class="feature-number">
-                        01 / SURVIVAL
-                    </div>
-
-
-                    <h3>
-                        Sobrevive
-                    </h3>
-
-
-                    <p>
-                        Consigue recursos, crea tu base,
-                        enfréntate a enemigos y construye
-                        tu propia aventura.
-                    </p>
-
-                </div>
-
-
-
-                <div class="feature">
-
-                    <div class="feature-number">
-                        02 / EXPLORE
-                    </div>
-
-
-                    <h3>
-                        Explora
-                    </h3>
-
-
-                    <p>
-                        Descubre nuevos lugares, construcciones,
-                        paisajes y secretos escondidos por
-                        todo el mundo.
-                    </p>
-
-                </div>
-
-
-
-                <div class="feature">
-
-                    <div class="feature-number">
-                        03 / COMMUNITY
-                    </div>
-
-
-                    <h3>
-                        Comunidad
-                    </h3>
-
-
-                    <p>
-                        Conoce nuevos jugadores, crea equipos
-                        y forma parte de la comunidad WILDARCH.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             MODES
-        ====================================================== -->
-
-        <section
-            class="section modes"
-            id="modos"
-        >
-
-            <div class="section-header">
-
-                <span class="section-label">
-                    GAMEPLAY
-                </span>
-
-
-                <h2>
-                    Juega a tu manera
-                </h2>
-
+            <div class="info-card">
+                <h3>Modo de juego</h3>
 
                 <p>
-                    Tu aventura, tus reglas y tu mundo.
+                    Una experiencia de supervivencia donde tendrás que
+                    luchar, explorar y convertirte en el jugador más poderoso.
                 </p>
-
             </div>
 
 
-            <div class="modes-grid">
-
-
-                <div class="mode">
-
-                    <div class="mode-icon">
-                        ⛏
-                    </div>
-
-
-                    <h3>
-                        Survival
-                    </h3>
-
-
-                    <p>
-                        Empieza desde cero y consigue
-                        todo lo necesario para sobrevivir.
-                    </p>
-
-                </div>
-
-
-
-                <div class="mode">
-
-                    <div class="mode-icon">
-                        🗺
-                    </div>
-
-
-                    <h3>
-                        Exploración
-                    </h3>
-
-
-                    <p>
-                        Recorre el mundo y descubre
-                        lugares que todavía nadie ha visto.
-                    </p>
-
-                </div>
-
-
-
-                <div class="mode">
-
-                    <div class="mode-icon">
-                        ⚔
-                    </div>
-
-
-                    <h3>
-                        Aventuras
-                    </h3>
-
-
-                    <p>
-                        Forma equipo con otros jugadores
-                        y crea tus propias historias.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             DISCORD
-        ====================================================== -->
-
-        <section
-            class="discord"
-            id="discord"
-        >
-
-            <div class="discord-box">
-
-
-                <h2>
-                    Únete a WILDARCH
-                </h2>
-
+            <div class="info-card">
+                <h3>Comunidad</h3>
 
                 <p>
-                    Entra al Discord, conoce a la comunidad
-                    y no te pierdas ninguna novedad.
+                    Forma equipo con otros jugadores, participa en eventos
+                    y disfruta de una comunidad creada alrededor de WildArch.
                 </p>
+            </div>
+
+        </div>
+
+    </section>
 
 
-                <a
-                    href="https://discord.gg/TU-SERVIDOR"
-                    target="_blank"
-                    class="btn btn-primary"
-                >
-                    ENTRAR AL DISCORD
-                    →
+    <!-- DISCORD -->
+
+    <section id="discord">
+
+        <div class="discord">
+
+            <h2>Únete al Discord</h2>
+
+            <p>
+                Entérate de las novedades, participa en eventos,
+                habla con la comunidad y recibe soporte.
+            </p>
+
+            <!-- CAMBIA ESTE LINK POR TU INVITACIÓN DE DISCORD -->
+
+            <a
+                href="https://discord.gg/TU_INVITACION"
+                target="_blank"
+                class="discord-btn"
+            >
+                Entrar al Discord
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- TIENDA -->
+
+    <section id="tienda">
+
+        <div class="section-title">
+
+            <h2>Tienda</h2>
+
+            <p>
+                Mejora tu experiencia con rangos exclusivos de WildArch.
+            </p>
+
+        </div>
+
+
+        <div class="store">
+
+
+            <!-- HUNTER -->
+
+            <div class="rank hunter">
+
+                <h3>Hunter</h3>
+
+                <div class="price">
+                    4.99€
+                </div>
+
+                <ul>
+                    <li>✔ Rango Hunter</li>
+                    <li>✔ Prefijo exclusivo</li>
+                    <li>✔ Comandos especiales</li>
+                    <li>✔ Beneficios ingame</li>
+                </ul>
+
+                <!-- CAMBIA EL LINK DE COMPRA -->
+
+                <a href="#" class="buy">
+                    Comprar
                 </a>
 
+            </div>
+
+
+            <!-- RAVAGER -->
+
+            <div class="rank ravager">
+
+                <h3>Ravager</h3>
+
+                <div class="price">
+                    9.99€
+                </div>
+
+                <ul>
+                    <li>✔ Rango Ravager</li>
+                    <li>✔ Prefijo exclusivo</li>
+                    <li>✔ Más comandos</li>
+                    <li>✔ Beneficios ingame</li>
+                </ul>
+
+                <a href="#" class="buy">
+                    Comprar
+                </a>
 
             </div>
 
-        </section>
 
-    </main>
+            <!-- PREDATOR -->
+
+            <div class="rank predator">
+
+                <h3>Predator</h3>
+
+                <div class="price">
+                    14.99€
+                </div>
+
+                <ul>
+                    <li>✔ Rango Predator</li>
+                    <li>✔ Prefijo exclusivo</li>
+                    <li>✔ Comandos avanzados</li>
+                    <li>✔ Beneficios premium</li>
+                </ul>
+
+                <a href="#" class="buy">
+                    Comprar
+                </a>
+
+            </div>
 
 
+            <!-- WILD -->
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
+            <div class="rank wild">
+
+                <h3>Wild</h3>
+
+                <div class="price">
+                    24.99€
+                </div>
+
+                <ul>
+                    <li>✔ Rango Wild</li>
+                    <li>✔ Prefijo exclusivo</li>
+                    <li>✔ Todos los comandos</li>
+                    <li>✔ Máximos beneficios</li>
+                </ul>
+
+                <a href="#" class="buy">
+                    Comprar
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
 
     <footer>
-
-        © 2026
-
-        <strong>
-            WILDARCH
-        </strong>
-
-        · Minecraft Server
-
+        © 2026 <span>WildArch</span> — Todos los derechos reservados.
     </footer>
 
 
-
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================== -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
-
-        /* =========================================================
-           COPIAR IP
-        ========================================================== */
-
         function copyIP() {
 
-            const ip =
-                document
-                .getElementById("serverIP")
-                .innerText;
+            const ip = "wildarch.aternos.me";
 
+            navigator.clipboard.writeText(ip);
 
-            const button =
-                document
-                .getElementById("copyButton");
+            const button = document.querySelector(".copy-btn");
 
+            button.textContent = "¡Copiado!";
 
-            navigator.clipboard
-                .writeText(ip)
-                .then(() => {
-
-                    button.innerText =
-                        "¡COPIADO! ✓";
-
-
-                    setTimeout(() => {
-
-                        button.innerText =
-                            "COPIAR IP";
-
-                    }, 1800);
-
-                })
-                .catch(() => {
-
-                    button.innerText =
-                        "NO SE PUDO COPIAR";
-
-                    setTimeout(() => {
-
-                        button.innerText =
-                            "COPIAR IP";
-
-                    }, 1800);
-
-                });
-
+            setTimeout(() => {
+                button.textContent = "Copiar IP";
+            }, 1500);
         }
-
-
-        /* =========================================================
-           ANIMACIÓN AL HACER SCROLL
-        ========================================================== */
-
-        const elements =
-            document.querySelectorAll(
-                ".feature, .mode, .big-card"
-            );
-
-
-        const observer =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.style.opacity = "1";
-
-                            entry.target.style.transform =
-                                "translateY(0)";
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        elements.forEach(element => {
-
-            element.style.opacity = "0";
-
-            element.style.transform =
-                "translateY(25px)";
-
-            element.style.transition =
-                "opacity 0.7s ease, transform 0.7s ease";
-
-            observer.observe(element);
-
-        });
-
-
-        /* =========================================================
-           PLAYER COUNT
-           
-           AQUÍ PUEDES CONECTAR UNA API REAL DEL SERVIDOR
-           ========================================================== */
-
-        document.getElementById("playerCount").innerText =
-            "--";
-
 
     </script>
 
-
 </body>
 </html>
+```
+
