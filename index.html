@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WildArch</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            background: #1b5e20;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        .ip {
+            margin: 30px auto;
+            background: #222;
+            padding: 20px;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #43a047;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #66bb6a;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        footer {
+            background: #0a0a0a;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌳 WildArch</h1>
+        <p>¡Bienvenido a nuestro servidor!</p>
+    </header>
+
+    <section>
+        <h2>🎮 Servidor</h2>
+
+        <div class="ip">
+            <p>IP del servidor:</p>
+            <strong id="serverIP">wildarch.aternos.me</strong>
+            <br><br>
+
+            <button onclick="copiarIP()">
+                Copiar IP
+            </button>
+        </div>
+    </section>
+
+    <section>
+        <h2>📜 Sobre el servidor</h2>
+
+        <p>
+            ¡Únete a nuestro servidor de Minecraft y disfruta
+            con tus amigos!
+        </p>
+    </section>
+
+    <section>
+        <h2>💬 Comunidad</h2>
+
+        <p>Únete a nuestro Discord.</p>
+
+        <button>
+            Discord
+        </button>
+    </section>
+
+    <footer>
+        © 2026 Mi Server Minecraft
+    </footer>
+
+    <script>
+        function copiarIP() {
+            const ip = document.getElementById("serverIP").innerText;
+
+            navigator.clipboard.writeText(ip);
+
+            alert("¡IP copiada!");
+        }
+    </script>
+
+</body>
+</html>
