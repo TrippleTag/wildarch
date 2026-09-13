@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>WILDARCH</title>
+    <title>WILDARCH | Minecraft</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -15,29 +16,48 @@
         }
 
         :root {
-            --bg: #0d1710;
-            --bg2: #111f14;
-            --green: #78a95a;
-            --green-light: #9bc477;
-            --text: #eef2e8;
-            --muted: #899589;
-            --border: #263629;
+            --navy: #050b18;
+            --navy-2: #09152a;
+            --blue: #2563eb;
+            --blue-light: #60a5fa;
+            --white: #f8fafc;
+            --gray: #94a3b8;
+            --border: rgba(255,255,255,.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            color: var(--white);
+            background: var(--navy);
+            overflow-x: hidden;
         }
 
-        /* NAV */
+        /* =========================
+           NAV
+        ========================= */
 
         nav {
-            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 7%;
+
+            z-index: 100;
+
+            background: rgba(5, 11, 24, .72);
+            backdrop-filter: blur(18px);
+
             border-bottom: 1px solid var(--border);
         }
 
@@ -45,313 +65,699 @@
             font-size: 20px;
             font-weight: 900;
             letter-spacing: 4px;
-            color: var(--green-light);
+        }
+
+        .logo span {
+            color: var(--blue-light);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
         }
 
         nav a {
-            color: var(--muted);
+            color: var(--gray);
             text-decoration: none;
             font-size: 14px;
+            transition: .2s;
         }
 
         nav a:hover {
             color: white;
         }
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            min-height: calc(100vh - 70px);
+            min-height: 100vh;
+
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+
             text-align: center;
-            padding: 60px 20px;
+
             position: relative;
             overflow: hidden;
+
+            padding: 100px 20px;
+            
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(37,99,235,.22),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(30,64,175,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b18,
+                    #09152a 55%,
+                    #050b18
+                );
         }
 
-        /* pequeños bloques decorativos */
+        /* Luces */
 
-        .block {
+        .glow {
             position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #29442b;
-            opacity: .6;
+            width: 500px;
+            height: 500px;
+
+            background: #2563eb;
+
+            filter: blur(180px);
+            opacity: .12;
+
+            border-radius: 50%;
         }
 
-        .block1 {
-            top: 22%;
-            left: 12%;
+        .glow.one {
+            top: -250px;
+            left: -200px;
         }
 
-        .block2 {
-            top: 35%;
-            right: 15%;
+        .glow.two {
+            bottom: -300px;
+            right: -150px;
         }
 
-        .block3 {
+        /* Detalles tipo bloques */
+
+        .pixel {
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #3b82f6;
+
+            opacity: .35;
+
+            box-shadow:
+                20px 10px 0 rgba(96,165,250,.2),
+                40px -5px 0 rgba(96,165,250,.15);
+        }
+
+        .pixel.p1 {
+            top: 25%;
+            left: 15%;
+        }
+
+        .pixel.p2 {
+            top: 32%;
+            right: 18%;
+        }
+
+        .pixel.p3 {
             bottom: 25%;
-            left: 20%;
+            left: 25%;
         }
 
-        .block4 {
-            bottom: 18%;
-            right: 24%;
+        .pixel.p4 {
+            bottom: 20%;
+            right: 25%;
         }
+
+        /* =========================
+           HERO CONTENT
+        ========================= */
 
         .hero-content {
-            max-width: 700px;
+            position: relative;
+            z-index: 5;
+
+            max-width: 800px;
         }
 
         .tag {
             display: inline-block;
-            margin-bottom: 25px;
-            color: var(--green-light);
+
+            padding: 8px 14px;
+
+            border: 1px solid rgba(96,165,250,.25);
+            border-radius: 999px;
+
+            background: rgba(37,99,235,.08);
+
+            color: var(--blue-light);
+
             font-size: 12px;
             font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
         }
 
         h1 {
-            font-size: clamp(60px, 11vw, 125px);
+            font-size: clamp(70px, 13vw, 145px);
+
+            line-height: .85;
+
             letter-spacing: 8px;
-            line-height: .9;
+
             font-weight: 900;
-            color: #8fba70;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #93c5fd
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            filter:
+                drop-shadow(0 0 30px rgba(59,130,246,.18));
         }
 
         .subtitle {
-            margin-top: 22px;
-            color: var(--muted);
-            font-size: 17px;
+            margin-top: 28px;
+
+            font-size: 19px;
+
+            color: var(--gray);
         }
 
-        /* IP */
-
-        .server {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 35px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-        }
-
-        .ip {
-            padding: 15px 20px;
-            font-family: monospace;
-            color: var(--green-light);
-        }
-
-        button {
-            border: none;
-            border-left: 1px solid var(--border);
-            padding: 15px 18px;
-            background: var(--green);
-            color: #101910;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: var(--green-light);
-        }
-
-        /* DISCORD */
-
-        .discord {
-            display: inline-block;
-            margin-top: 18px;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .discord:hover {
+        .subtitle strong {
             color: white;
         }
 
-        /* FEATURES */
+        /* =========================
+           SERVER IP
+        ========================= */
 
-        .features {
-            border-top: 1px solid var(--border);
-            background: var(--bg2);
-            padding: 70px 7%;
+        .server {
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-top: 35px;
+
+            padding: 5px;
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.05);
+
+            border: 1px solid var(--border);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.25);
         }
 
-        .features-grid {
-            max-width: 850px;
+        .ip {
+            padding: 14px 18px;
+
+            min-width: 210px;
+
+            font-family: monospace;
+
+            color: #bfdbfe;
+        }
+
+        .copy {
+            padding: 14px 18px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3b82f6,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .copy:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px rgba(37,99,235,.35);
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 14px 23px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            border: 1px solid rgba(96,165,250,.25);
+
+            border-radius: 9px;
+
+            background: rgba(255,255,255,.04);
+
+            transition: .2s;
+        }
+
+        .button:hover {
+            background: rgba(59,130,246,.12);
+
+            border-color: rgba(96,165,250,.5);
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            padding: 100px 7%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #050b18,
+                    #081326
+                );
+
+            border-top: 1px solid var(--border);
+        }
+
+        .features-container {
+            max-width: 950px;
             margin: auto;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
         }
 
         .feature {
-            padding: 25px;
-            border-right: 1px solid var(--border);
-            text-align: center;
+            padding: 30px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.015)
+                );
+
+            backdrop-filter: blur(10px);
+
+            transition: .25s;
         }
 
-        .feature:last-child {
-            border-right: none;
+        .feature:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(96,165,250,.3);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.2);
+        }
+
+        .feature-number {
+            color: var(--blue-light);
+
+            font-family: monospace;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
         }
 
         .feature h3 {
-            font-size: 14px;
-            margin-bottom: 9px;
-            color: var(--green-light);
-            letter-spacing: 1px;
+            font-size: 17px;
+
+            margin-bottom: 10px;
         }
 
         .feature p {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.5;
+            color: var(--gray);
+
+            font-size: 14px;
+
+            line-height: 1.6;
         }
 
-        /* FOOTER */
+        /* =========================
+           DISCORD
+        ========================= */
+
+        .discord {
+            padding: 100px 20px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(37,99,235,.15),
+                    transparent 50%
+                ),
+                #071122;
+        }
+
+        .discord h2 {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .discord p {
+            color: var(--gray);
+
+            margin-bottom: 25px;
+        }
+
+        .discord-button {
+            display: inline-block;
+
+            padding: 14px 24px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 10px 35px rgba(37,99,235,.25);
+
+            transition: .2s;
+        }
+
+        .discord-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 40px rgba(37,99,235,.35);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             padding: 25px;
+
             text-align: center;
-            color: #536053;
+
+            color: #526174;
+
             font-size: 12px;
+
+            border-top: 1px solid var(--border);
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
-        @media (max-width: 650px) {
+        @media(max-width: 700px) {
 
             nav {
                 padding: 0 20px;
             }
 
-            nav a {
+            nav ul {
                 display: none;
             }
 
             h1 {
-                font-size: 60px;
+                font-size: 65px;
                 letter-spacing: 4px;
+            }
+
+            .subtitle {
+                font-size: 16px;
             }
 
             .server {
                 width: 100%;
-                max-width: 330px;
+                max-width: 340px;
             }
 
             .ip {
+                min-width: 0;
                 flex: 1;
                 font-size: 13px;
             }
 
-            .features-grid {
+            .features-container {
                 grid-template-columns: 1fr;
             }
 
-            .feature {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .feature:last-child {
-                border-bottom: none;
+            .discord h2 {
+                font-size: 30px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+    <!-- NAV -->
+
     <nav>
-        <div class="logo">WILDARCH</div>
-        <a href="#servidor">Servidor</a>
+
+        <div class="logo">
+            WILD<span>ARCH</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="#servidor">
+                    Servidor
+                </a>
+            </li>
+
+            <li>
+                <a href="#discord">
+                    Discord
+                </a>
+            </li>
+        </ul>
+
     </nav>
 
 
-    <main>
+    <!-- HERO -->
 
-        <section class="hero">
+    <section class="hero">
 
-            <div class="block block1"></div>
-            <div class="block block2"></div>
-            <div class="block block3"></div>
-            <div class="block block4"></div>
+        <div class="glow one"></div>
+        <div class="glow two"></div>
 
-            <div class="hero-content">
+        <div class="pixel p1"></div>
+        <div class="pixel p2"></div>
+        <div class="pixel p3"></div>
+        <div class="pixel p4"></div>
 
-                <div class="tag">
-                    Minecraft Survival
+
+        <div class="hero-content">
+
+            <div class="tag">
+                MINECRAFT SURVIVAL
+            </div>
+
+
+            <h1>
+                WILDARCH
+            </h1>
+
+
+            <p class="subtitle">
+                <strong>Explora.</strong>
+                <strong>Construye.</strong>
+                <strong>Conquista.</strong>
+            </p>
+
+
+            <div class="server">
+
+                <!-- CAMBIA TU IP -->
+
+                <span
+                    class="ip"
+                    id="serverIP"
+                >
+                    play.wildarch.es
+                </span>
+
+                <button
+                    class="copy"
+                    onclick="copyIP()"
+                >
+                    COPIAR
+                </button>
+
+            </div>
+
+
+            <br>
+
+
+            <!-- CAMBIA TU DISCORD -->
+
+            <a
+                href="https://discord.gg/TU-SERVIDOR"
+                target="_blank"
+                class="button"
+            >
+                Discord →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section
+        class="features"
+        id="servidor"
+    >
+
+        <div class="features-container">
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    01
                 </div>
 
-                <h1>WILDARCH</h1>
+                <h3>
+                    Survival
+                </h3>
 
-                <p class="subtitle">
-                    Un mundo. Tu aventura.
+                <p>
+                    Un mundo abierto para construir,
+                    explorar y sobrevivir.
                 </p>
 
-                <div class="server">
+            </div>
 
-                    <!-- CAMBIA LA IP -->
-                    <span class="ip" id="ip">
-                        play.wildarch.es
-                    </span>
 
-                    <button onclick="copyIP()">
-                        COPIAR
-                    </button>
+            <div class="feature">
 
+                <div class="feature-number">
+                    02
                 </div>
 
-                <!-- CAMBIA EL DISCORD -->
-                <br>
+                <h3>
+                    Comunidad
+                </h3>
 
-                <a
-                    class="discord"
-                    href="https://discord.gg/TU-SERVIDOR"
-                    target="_blank"
-                >
-                    Discord →
-                </a>
+                <p>
+                    Juega con otros jugadores
+                    y crea tu propia aventura.
+                </p>
 
             </div>
 
-        </section>
 
+            <div class="feature">
 
-        <section class="features" id="servidor">
-
-            <div class="features-grid">
-
-                <div class="feature">
-                    <h3>SURVIVAL</h3>
-                    <p>
-                        Sobrevive y construye tu propio mundo.
-                    </p>
+                <div class="feature-number">
+                    03
                 </div>
 
-                <div class="feature">
-                    <h3>COMUNIDAD</h3>
-                    <p>
-                        Juega y crea junto a otros jugadores.
-                    </p>
-                </div>
+                <h3>
+                    WildArch
+                </h3>
 
-                <div class="feature">
-                    <h3>WILD</h3>
-                    <p>
-                        Explora un mundo lleno de posibilidades.
-                    </p>
-                </div>
+                <p>
+                    Un servidor creado para
+                    disfrutar Minecraft.
+                </p>
 
             </div>
 
-        </section>
 
-    </main>
+        </div>
 
+    </section>
+
+
+    <!-- DISCORD -->
+
+    <section
+        class="discord"
+        id="discord"
+    >
+
+        <h2>
+            Únete a WildArch
+        </h2>
+
+        <p>
+            Forma parte de nuestra comunidad.
+        </p>
+
+        <a
+            href="https://discord.gg/TU-SERVIDOR"
+            target="_blank"
+            class="discord-button"
+        >
+            ENTRAR AL DISCORD
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
 
     <footer>
         © 2026 WILDARCH
@@ -362,22 +768,33 @@
 
         function copyIP() {
 
-            const ip = document.getElementById("ip").innerText;
+            const ip =
+                document
+                .getElementById("serverIP")
+                .innerText;
 
-            navigator.clipboard.writeText(ip);
+            navigator
+                .clipboard
+                .writeText(ip);
 
-            const button = document.querySelector("button");
+            const button =
+                document.querySelector(".copy");
 
-            button.innerText = "¡COPIADO!";
+            button.innerText = "COPIADO ✓";
 
             setTimeout(() => {
+
                 button.innerText = "COPIAR";
+
             }, 1500);
+
         }
 
     </script>
 
+
 </body>
 </html>
 ```
+
 
