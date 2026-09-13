@@ -146,5 +146,404 @@
             box-shadow: 0 0 40px rgba(85,255,85,0.5);
         }
 
-        .btn-seconda
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* SERVER BOX */
+
+        .server-box {
+            margin: -55px auto 0;
+            position: relative;
+            z-index: 5;
+            max-width: 700px;
+            padding: 25px;
+            background: #11161c;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #55ff55;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #55ff55;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #55ff55;
+        }
+
+        .ip {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            border: none;
+            cursor: pointer;
+            padding: 12px 22px;
+            border-radius: 8px;
+            background: #55ff55;
+            font-weight: bold;
+        }
+
+        .copy-btn:hover {
+            background: #76ff76;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 110px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #55ff55;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #888;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        /* CARDS */
+
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #11161c;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(85,255,85,0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* DISCORD */
+
+        .discord {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+            padding: 60px 30px;
+            border-radius: 25px;
+            background:
+                linear-gradient(135deg, rgba(85,255,85,0.12), rgba(85,255,85,0.02));
+            border: 1px solid rgba(85,255,85,0.15);
+        }
+
+        .discord h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .discord p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        footer span {
+            color: #55ff55;
+        }
+
+        /* ANIMATION */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .server-box {
+                margin: -30px 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">
+            <span>◆</span> NOVACRAFT
+        </div>
+
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#modos">Modos</a></li>
+            <li><a href="#comunidad">Comunidad</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🟢 SERVIDOR ONLINE
+            </div>
+
+            <h1>
+                NOVA<span>CRAFT</span>
+            </h1>
+
+            <p>
+                Una nueva aventura comienza aquí.
+                Juega con tus amigos, construye tu imperio
+                y descubre un mundo lleno de posibilidades.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#modos" class="btn btn-primary">
+                    Explorar servidor
+                </a>
+
+                <a href="#comunidad" class="btn btn-secondary">
+                    Comunidad
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- IP -->
+
+    <div class="server-box">
+
+        <div class="server-status">
+            <div class="dot"></div>
+            SERVIDOR ONLINE
+        </div>
+
+        <div class="ip" id="serverIP">
+            wildarch.aternos.me
+        </div>
+
+        <button class="copy-btn" onclick="copiarIP()">
+            📋 Copiar IP
+        </button>
+
+    </div>
+
+
+    <!-- MODOS -->
+
+    <section id="modos">
+
+        <h2 class="section-title">
+            ¿Qué puedes <span>hacer?</span>
+        </h2>
+
+        <p class="section-description">
+            Entra al servidor y descubre todos nuestros modos
+            y sistemas exclusivos.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">⚔️</div>
+
+                <h3>Survival</h3>
+
+                <p>
+                    Sobrevive, consigue recursos, construye
+                    tu base y conviértete en el jugador más poderoso.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">💰</div>
+
+                <h3>Economía</h3>
+
+                <p>
+                    Compra, vende e intercambia objetos.
+                    Crea tu propia economía y consigue riquezas.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🏰</div>
+
+                <h3>Clanes</h3>
+
+                <p>
+                    Forma un clan con tus amigos, conquista
+                    territorios y compite contra otros jugadores.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMUNIDAD -->
+
+    <section id="comunidad">
+
+        <div class="discord">
+
+            <h2>💬 Únete a la comunidad</h2>
+
+            <p>
+                Habla con otros jugadores, participa en eventos
+                y recibe las últimas noticias del servidor.
+            </p>
+
+            <a
+                href="https://discord.gg/TU-SERVIDOR"
+                target="_blank"
+                class="btn btn-primary"
+            >
+                Unirme al Discord
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 <span>NovaCraft</span>.
+        Todos los derechos reservados.
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function copiarIP() {
+
+            const ip =
+                document.getElementById("serverIP").innerText;
+
+            navigator.clipboard.writeText(ip);
+
+            const boton =
+                document.querySelector(".copy-btn");
+
+            boton.innerText = "✅ ¡IP copiada!";
+
+            setTimeout(() => {
+                boton.innerText = "📋 Copiar IP";
+            }, 2000);
+
+        }
+
+    </script>
+
+</body>
+</html>
 ```
