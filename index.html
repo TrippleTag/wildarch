@@ -7,9 +7,15 @@
 
     <title>WildArch | Minecraft Server</title>
 
-    <meta name="description" content="WildArch - Servidor de Minecraft. Únete, entra a nuestro Discord y consigue rangos exclusivos.">
+    <meta name="description"
+          content="WildArch - Servidor de Minecraft. Únete, entra a nuestro Discord y consigue rangos exclusivos.">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -27,12 +33,16 @@
             line-height: 1.6;
         }
 
-        /* NAVBAR */
+
+        /* =========================
+           NAVBAR
+        ========================= */
 
         nav {
             position: fixed;
             top: 0;
             left: 0;
+
             width: 100%;
             height: 70px;
 
@@ -42,7 +52,7 @@
 
             padding: 0 8%;
 
-            background: rgba(11, 13, 12, 0.85);
+            background: rgba(11, 13, 12, 0.88);
             backdrop-filter: blur(12px);
 
             border-bottom: 1px solid #202522;
@@ -52,7 +62,7 @@
 
         .logo {
             font-size: 22px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 1px;
         }
 
@@ -63,13 +73,16 @@
         nav ul {
             display: flex;
             gap: 30px;
+
             list-style: none;
         }
 
         nav a {
             color: #aaa;
             text-decoration: none;
+
             font-size: 14px;
+
             transition: 0.2s;
         }
 
@@ -77,7 +90,10 @@
             color: #77c043;
         }
 
-        /* HERO */
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             min-height: 100vh;
@@ -101,8 +117,11 @@
 
         .hero h1 {
             font-size: clamp(55px, 10vw, 110px);
+
             font-weight: 900;
+
             letter-spacing: -5px;
+
             line-height: 1;
         }
 
@@ -112,10 +131,18 @@
 
         .hero p {
             margin-top: 25px;
+
             max-width: 600px;
+
             color: #999;
+
             font-size: 18px;
         }
+
+
+        /* =========================
+           SERVER IP
+        ========================= */
 
         .server-ip {
             margin-top: 35px;
@@ -127,6 +154,7 @@
             padding: 14px 18px;
 
             border: 1px solid #282d29;
+
             border-radius: 10px;
 
             background: #111412;
@@ -134,18 +162,22 @@
 
         .server-ip code {
             color: #77c043;
+
             font-size: 16px;
         }
 
         .copy-btn {
             border: none;
+
             background: #77c043;
             color: #081006;
 
             padding: 9px 14px;
+
             border-radius: 7px;
 
             cursor: pointer;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -153,23 +185,36 @@
 
         .copy-btn:hover {
             transform: translateY(-2px);
+
             background: #8ed457;
         }
 
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
         .buttons {
             margin-top: 30px;
+
             display: flex;
+
             gap: 12px;
+
             flex-wrap: wrap;
+
             justify-content: center;
         }
 
         .btn {
             padding: 13px 24px;
+
             border-radius: 8px;
 
             text-decoration: none;
+
             font-weight: bold;
+
             font-size: 14px;
 
             transition: 0.2s;
@@ -177,11 +222,13 @@
 
         .btn-primary {
             background: #77c043;
+
             color: #081006;
         }
 
         .btn-secondary {
             border: 1px solid #303630;
+
             color: white;
         }
 
@@ -189,7 +236,10 @@
             transform: translateY(-3px);
         }
 
-        /* SECTIONS */
+
+        /* =========================
+           SECTIONS
+        ========================= */
 
         section {
             padding: 100px 8%;
@@ -197,11 +247,13 @@
 
         .section-title {
             text-align: center;
+
             margin-bottom: 55px;
         }
 
         .section-title h2 {
             font-size: 38px;
+
             margin-bottom: 10px;
         }
 
@@ -209,13 +261,18 @@
             color: #777;
         }
 
-        /* SERVER */
+
+        /* =========================
+           SERVER
+        ========================= */
 
         .server-box {
             max-width: 900px;
+
             margin: auto;
 
             display: grid;
+
             grid-template-columns: 1fr 1fr;
 
             gap: 20px;
@@ -223,7 +280,9 @@
 
         .info-card {
             background: #111412;
+
             border: 1px solid #222723;
+
             border-radius: 12px;
 
             padding: 30px;
@@ -233,6 +292,7 @@
 
         .info-card:hover {
             border-color: #4e713e;
+
             transform: translateY(-4px);
         }
 
@@ -246,27 +306,37 @@
 
         .status {
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
 
             margin-top: 15px;
 
             color: #77c043;
+
             font-size: 14px;
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
+
             border-radius: 50%;
+
             background: #77c043;
+
             box-shadow: 0 0 10px #77c043;
         }
 
-        /* DISCORD */
+
+        /* =========================
+           DISCORD
+        ========================= */
 
         .discord {
             max-width: 900px;
+
             margin: auto;
 
             padding: 50px 30px;
@@ -275,11 +345,12 @@
 
             border-radius: 14px;
 
-            background: linear-gradient(
-                135deg,
-                #151a16,
-                #0e110f
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #151a16,
+                    #0e110f
+                );
 
             border: 1px solid #242b25;
         }
@@ -290,6 +361,7 @@
 
         .discord p {
             max-width: 600px;
+
             margin: 15px auto 25px;
 
             color: #888;
@@ -301,11 +373,13 @@
             padding: 13px 25px;
 
             background: #5865F2;
+
             color: white;
 
             text-decoration: none;
 
             border-radius: 8px;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -313,25 +387,31 @@
 
         .discord-btn:hover {
             transform: translateY(-3px);
+
+            filter: brightness(1.1);
         }
 
-        /* STORE */
+
+        /* =========================
+           STORE
+        ========================= */
 
         .store {
             display: grid;
 
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
 
-            gap: 20px;
+            gap: 18px;
 
-            max-width: 1200px;
+            max-width: 1300px;
+
             margin: auto;
         }
 
         .rank {
             position: relative;
 
-            padding: 30px 22px;
+            padding: 30px 20px;
 
             background: #111412;
 
@@ -346,16 +426,22 @@
 
         .rank:hover {
             transform: translateY(-7px);
+
             border-color: #77c043;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
         .rank h3 {
-            font-size: 24px;
+            font-size: 23px;
+
             margin-bottom: 5px;
         }
 
         .rank .price {
-            font-size: 30px;
+            font-size: 29px;
+
             font-weight: bold;
 
             margin: 15px 0;
@@ -369,7 +455,8 @@
             margin: 20px 0;
 
             color: #888;
-            font-size: 14px;
+
+            font-size: 13px;
         }
 
         .rank li {
@@ -384,11 +471,13 @@
             border-radius: 7px;
 
             background: #1b211c;
+
             border: 1px solid #303830;
 
             color: white;
 
             text-decoration: none;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -396,10 +485,16 @@
 
         .buy:hover {
             background: #77c043;
+
             color: #081006;
+
+            border-color: #77c043;
         }
 
-        /* RANK COLORS */
+
+        /* =========================
+           RANK COLORS
+        ========================= */
 
         .hunter h3 {
             color: #7ec8ff;
@@ -413,11 +508,18 @@
             color: #d65cff;
         }
 
+        .dominator h3 {
+            color: #ff3b3b;
+        }
+
         .wild h3 {
             color: #77c043;
         }
 
-        /* FOOTER */
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             padding: 35px 20px;
@@ -427,6 +529,7 @@
             border-top: 1px solid #202522;
 
             color: #666;
+
             font-size: 13px;
         }
 
@@ -434,25 +537,28 @@
             color: #77c043;
         }
 
-        /* RESPONSIVE */
 
-        @media (max-width: 900px) {
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
             .store {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
+
         }
 
-        @media (max-width: 650px) {
+
+        @media (max-width: 800px) {
+
             nav {
                 padding: 0 20px;
             }
 
             nav ul {
-                gap: 12px;
-            }
-
-            nav a {
-                font-size: 12px;
+                gap: 15px;
             }
 
             .server-box {
@@ -460,7 +566,28 @@
             }
 
             .store {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            nav {
+                height: 60px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .logo {
+                font-size: 18px;
             }
 
             section {
@@ -468,34 +595,78 @@
             }
 
             .hero h1 {
+                font-size: 60px;
+
                 letter-spacing: -3px;
+            }
+
+            .hero p {
+                font-size: 15px;
             }
 
             .server-ip {
                 flex-direction: column;
+
+                width: 100%;
+
+                max-width: 300px;
             }
+
+            .store {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
 
     <nav>
+
         <div class="logo">
             WILD<span>ARCH</span>
         </div>
 
         <ul>
-            <li><a href="#server">Server</a></li>
-            <li><a href="#discord">Discord</a></li>
-            <li><a href="#tienda">Tienda</a></li>
+
+            <li>
+                <a href="#server">
+                    Server
+                </a>
+            </li>
+
+            <li>
+                <a href="#discord">
+                    Discord
+                </a>
+            </li>
+
+            <li>
+                <a href="#tienda">
+                    Tienda
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <header class="hero">
 
@@ -509,106 +680,165 @@
             Únete a la comunidad de WildArch.
         </p>
 
-        <div class="server-ip">
-            <code id="ip">wildarch.aternos.me</code>
 
-            <button class="copy-btn" onclick="copyIP()">
+        <div class="server-ip">
+
+            <code id="ip">
+                wildarch.aternos.me
+            </code>
+
+            <button
+                class="copy-btn"
+                onclick="copyIP()"
+            >
                 Copiar IP
             </button>
+
         </div>
 
+
         <div class="buttons">
-            <a href="#server" class="btn btn-primary">
+
+            <a
+                href="#server"
+                class="btn btn-primary"
+            >
                 Ver servidor
             </a>
 
-            <a href="#tienda" class="btn btn-secondary">
+            <a
+                href="#tienda"
+                class="btn btn-secondary"
+            >
                 Ver tienda
             </a>
+
         </div>
 
     </header>
 
 
-    <!-- SERVER -->
+    <!-- =========================
+         SERVER
+    ========================= -->
 
     <section id="server">
 
         <div class="section-title">
-            <h2>Servidor</h2>
+
+            <h2>
+                Servidor
+            </h2>
 
             <p>
                 Todo lo que necesitas para entrar a WildArch.
             </p>
+
         </div>
 
 
         <div class="server-box">
 
+
             <div class="info-card">
-                <h3>IP del servidor</h3>
+
+                <h3>
+                    IP del servidor
+                </h3>
 
                 <p>
-                    Copia esta dirección y añádela a tu lista de servidores de Minecraft.
+                    Copia esta dirección y añádela
+                    a tu lista de servidores de Minecraft.
                 </p>
 
                 <div class="status">
+
                     <span class="status-dot"></span>
+
                     wildarch.aternos.me
+
                 </div>
+
             </div>
 
 
             <div class="info-card">
-                <h3>Versión</h3>
+
+                <h3>
+                    Versión
+                </h3>
 
                 <p>
                     Minecraft Java Edition.
                     <br><br>
-                    <!-- CAMBIA ESTA PARTE POR LA VERSIÓN DE TU SERVER -->
-                    Versión: Próximamente
+
+                    Versión:
+                    <strong>
+                        Próximamente
+                    </strong>
                 </p>
+
             </div>
 
 
             <div class="info-card">
-                <h3>Modo de juego</h3>
+
+                <h3>
+                    Modo de juego
+                </h3>
 
                 <p>
-                    Una experiencia de supervivencia donde tendrás que
-                    luchar, explorar y convertirte en el jugador más poderoso.
+                    Una experiencia de supervivencia
+                    donde tendrás que luchar, explorar
+                    y convertirte en el jugador más poderoso.
                 </p>
+
             </div>
 
 
             <div class="info-card">
-                <h3>Comunidad</h3>
+
+                <h3>
+                    Comunidad
+                </h3>
 
                 <p>
-                    Forma equipo con otros jugadores, participa en eventos
-                    y disfruta de una comunidad creada alrededor de WildArch.
+                    Forma equipo con otros jugadores,
+                    participa en eventos y disfruta de
+                    la comunidad de WildArch.
                 </p>
+
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- DISCORD -->
+    <!-- =========================
+         DISCORD
+    ========================= -->
 
     <section id="discord">
 
         <div class="discord">
 
-            <h2>Únete al Discord</h2>
+            <h2>
+                Únete al Discord
+            </h2>
 
             <p>
-                Entérate de las novedades, participa en eventos,
-                habla con la comunidad y recibe soporte.
+                Entérate de las novedades, participa
+                en eventos, habla con la comunidad
+                y recibe soporte.
             </p>
 
-            <!-- CAMBIA ESTE LINK POR TU INVITACIÓN DE DISCORD -->
+
+            <!--
+                CAMBIA EL LINK POR TU INVITACIÓN
+                DE DISCORD
+            -->
 
             <a
                 href="https://discord.gg/TU_INVITACION"
@@ -623,16 +853,21 @@
     </section>
 
 
-    <!-- TIENDA -->
+    <!-- =========================
+         TIENDA
+    ========================= -->
 
     <section id="tienda">
 
         <div class="section-title">
 
-            <h2>Tienda</h2>
+            <h2>
+                Tienda
+            </h2>
 
             <p>
-                Mejora tu experiencia con rangos exclusivos de WildArch.
+                Consigue rangos exclusivos
+                y mejora tu experiencia en WildArch.
             </p>
 
         </div>
@@ -641,116 +876,264 @@
         <div class="store">
 
 
-            <!-- HUNTER -->
+            <!-- =====================
+                 HUNTER
+            ====================== -->
 
             <div class="rank hunter">
 
-                <h3>Hunter</h3>
+                <h3>
+                    Hunter
+                </h3>
 
                 <div class="price">
                     4.99€
                 </div>
 
                 <ul>
-                    <li>✔ Rango Hunter</li>
-                    <li>✔ Prefijo exclusivo</li>
-                    <li>✔ Comandos especiales</li>
-                    <li>✔ Beneficios ingame</li>
+
+                    <li>
+                        ✔ Rango Hunter
+                    </li>
+
+                    <li>
+                        ✔ Prefijo exclusivo
+                    </li>
+
+                    <li>
+                        ✔ Comandos especiales
+                    </li>
+
+                    <li>
+                        ✔ Beneficios ingame
+                    </li>
+
                 </ul>
 
-                <!-- CAMBIA EL LINK DE COMPRA -->
 
-                <a href="#" class="buy">
+                <!--
+                    CAMBIA # POR EL LINK
+                    DE COMPRA
+                -->
+
+                <a
+                    href="#"
+                    class="buy"
+                >
                     Comprar
                 </a>
 
             </div>
 
 
-            <!-- RAVAGER -->
+            <!-- =====================
+                 RAVAGER
+            ====================== -->
 
             <div class="rank ravager">
 
-                <h3>Ravager</h3>
+                <h3>
+                    Ravager
+                </h3>
 
                 <div class="price">
                     9.99€
                 </div>
 
                 <ul>
-                    <li>✔ Rango Ravager</li>
-                    <li>✔ Prefijo exclusivo</li>
-                    <li>✔ Más comandos</li>
-                    <li>✔ Beneficios ingame</li>
+
+                    <li>
+                        ✔ Rango Ravager
+                    </li>
+
+                    <li>
+                        ✔ Prefijo exclusivo
+                    </li>
+
+                    <li>
+                        ✔ Más comandos
+                    </li>
+
+                    <li>
+                        ✔ Beneficios ingame
+                    </li>
+
                 </ul>
 
-                <a href="#" class="buy">
+
+                <a
+                    href="#"
+                    class="buy"
+                >
                     Comprar
                 </a>
 
             </div>
 
 
-            <!-- PREDATOR -->
+            <!-- =====================
+                 PREDATOR
+            ====================== -->
 
             <div class="rank predator">
 
-                <h3>Predator</h3>
+                <h3>
+                    Predator
+                </h3>
 
                 <div class="price">
                     14.99€
                 </div>
 
                 <ul>
-                    <li>✔ Rango Predator</li>
-                    <li>✔ Prefijo exclusivo</li>
-                    <li>✔ Comandos avanzados</li>
-                    <li>✔ Beneficios premium</li>
+
+                    <li>
+                        ✔ Rango Predator
+                    </li>
+
+                    <li>
+                        ✔ Prefijo exclusivo
+                    </li>
+
+                    <li>
+                        ✔ Comandos avanzados
+                    </li>
+
+                    <li>
+                        ✔ Beneficios premium
+                    </li>
+
                 </ul>
 
-                <a href="#" class="buy">
+
+                <a
+                    href="#"
+                    class="buy"
+                >
                     Comprar
                 </a>
 
             </div>
 
 
-            <!-- WILD -->
+            <!-- =====================
+                 DOMINATOR
+            ====================== -->
+
+            <div class="rank dominator">
+
+                <h3>
+                    Dominator
+                </h3>
+
+                <div class="price">
+                    19.99€
+                </div>
+
+                <ul>
+
+                    <li>
+                        ✔ Rango Dominator
+                    </li>
+
+                    <li>
+                        ✔ Prefijo exclusivo
+                    </li>
+
+                    <li>
+                        ✔ Comandos avanzados
+                    </li>
+
+                    <li>
+                        ✔ Beneficios premium
+                    </li>
+
+                    <li>
+                        ✔ Beneficios exclusivos
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="#"
+                    class="buy"
+                >
+                    Comprar
+                </a>
+
+            </div>
+
+
+            <!-- =====================
+                 WILD
+            ====================== -->
 
             <div class="rank wild">
 
-                <h3>Wild</h3>
+                <h3>
+                    Wild
+                </h3>
 
                 <div class="price">
                     24.99€
                 </div>
 
                 <ul>
-                    <li>✔ Rango Wild</li>
-                    <li>✔ Prefijo exclusivo</li>
-                    <li>✔ Todos los comandos</li>
-                    <li>✔ Máximos beneficios</li>
+
+                    <li>
+                        ✔ Rango Wild
+                    </li>
+
+                    <li>
+                        ✔ Prefijo exclusivo
+                    </li>
+
+                    <li>
+                        ✔ Todos los comandos
+                    </li>
+
+                    <li>
+                        ✔ Máximos beneficios
+                    </li>
+
                 </ul>
 
-                <a href="#" class="buy">
+
+                <a
+                    href="#"
+                    class="buy"
+                >
                     Comprar
                 </a>
 
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
-        © 2026 <span>WildArch</span> — Todos los derechos reservados.
+
+        © 2026
+        <span>
+            WildArch
+        </span>
+
+        — Todos los derechos reservados.
+
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
@@ -760,16 +1143,21 @@
 
             navigator.clipboard.writeText(ip);
 
-            const button = document.querySelector(".copy-btn");
+            const button =
+                document.querySelector(".copy-btn");
 
             button.textContent = "¡Copiado!";
 
             setTimeout(() => {
+
                 button.textContent = "Copiar IP";
+
             }, 1500);
+
         }
 
     </script>
+
 
 </body>
 </html>
